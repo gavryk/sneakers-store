@@ -12,10 +12,10 @@ function App() {
     return (
         <div className="wrapper clear">
             <div className="drawer-overlay">
-                <div className="drawer p-30">
+                <div className="drawer p-30 d-flex flex-column">
                     <h2 className='mb-30'>Cart</h2>
 
-                    <div className="cart-items">
+                    <div className="cart-items flex">
                         <div className="cart-item p-15 d-flex align-center justify-between mb-20">
                             <img
                                 className='mr-10 cartItemImage'
@@ -49,18 +49,21 @@ function App() {
                         </div>
                     </div>
 
-                    <ul className='cartTotalBlock'>
-                        <li className='d-flex'>
-                            <span>Total: </span>
-                            <div></div>
-                            <b>120$</b>
-                        </li>
-                        <li className='d-flex'>
-                            <span>Tax 5%: </span>
-                            <div></div>
-                            <b>20$</b>
-                        </li>
-                    </ul>
+                    <div className='cartTotalBlock'>
+                        <ul className='mb-20'>
+                            <li>
+                                <span>Total: </span>
+                                <div></div>
+                                <b>120$</b>
+                            </li>
+                            <li>
+                                <span>Tax 5%: </span>
+                                <div></div>
+                                <b>20$</b>
+                            </li>
+                        </ul>
+                        <button className='btn greenBtn'>To Order</button>
+                    </div>
                 </div>
             </div>
 

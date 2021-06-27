@@ -106,6 +106,27 @@ body {
   }
 }
 
+.btn {
+  &.greenBtn {
+    width: 100%;
+    background: #9DD558;
+    border-radius: 18px;
+    border: 0;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 15px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    &:hover {
+      background: darken(#9DD558, 10%);
+    }
+    &:active {
+      background: lighten(#9DD558, 10%);
+    }
+  }
+}
+
 .drawer-overlay {
   position: absolute;
   top: 0;
@@ -137,6 +158,25 @@ body {
         transition: all .2s ease-in-out;
         &:hover {
           opacity: 1;
+        }
+      }
+    }
+  }
+
+  .cartTotalBlock {
+    ul {
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        div {
+          flex: 1;
+          height: 1px;
+          border-bottom: 1px dashed #dfdfdf;
+          position: relative;
+          bottom: -5px;
+          margin: 0 10px;
         }
       }
     }
