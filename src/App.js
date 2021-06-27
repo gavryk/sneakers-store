@@ -4,6 +4,7 @@ import userIcon from '../src/img/user-icon.svg';
 import heartIcon from './img/heart-unliked.svg';
 import heartLikedIcon from './img/heart-liked.svg';
 import checkedIcon from './img/checked-icon.svg';
+import removeIcon from './img/remove-icon.svg';
 import plusIcon from '../src/img/plus.svg';
 import searchIcon from '../src/img/search-icon.svg';
 
@@ -12,17 +13,54 @@ function App() {
         <div className="wrapper clear">
             <div className="drawer-overlay">
                 <div className="drawer p-30">
-                    <h2>Cart</h2>
+                    <h2 className='mb-30'>Cart</h2>
 
                     <div className="cart-items">
-                        <div className="cart-item">
-                            <img src="img/sneakers/1.png" alt="Sneaker"/>
-                            <div>
-                                <h5>Nike Blazer Mid Suede</h5>
+                        <div className="cart-item p-15 d-flex align-center justify-between mb-20">
+                            <img
+                                className='mr-10 cartItemImage'
+                                width={70}
+                                height={70}
+                                src="img/sneakers/1.png"
+                                alt="Sneaker"/>
+                            <div className='mr-10'>
+                                <h5 className='mb-5'>Nike Blazer Mid Suede </h5>
                                 <b>100$</b>
                             </div>
+                            <button className="button removeBtn">
+                                <img src={ removeIcon } alt="Remove"/>
+                            </button>
+                        </div>
+
+                        <div className="cart-item p-15 d-flex align-center justify-between">
+                            <img
+                                className='mr-10 cartItemImage'
+                                width={70}
+                                height={70}
+                                src="img/sneakers/1.png"
+                                alt="Sneaker"/>
+                            <div className='mr-10'>
+                                <h5 className='mb-5'>Nike Blazer Mid Suede </h5>
+                                <b>100$</b>
+                            </div>
+                            <button className="button removeBtn">
+                                <img src={ removeIcon } alt="Remove"/>
+                            </button>
                         </div>
                     </div>
+
+                    <ul className='cartTotalBlock'>
+                        <li className='d-flex'>
+                            <span>Total: </span>
+                            <div></div>
+                            <b>120$</b>
+                        </li>
+                        <li className='d-flex'>
+                            <span>Tax 5%: </span>
+                            <div></div>
+                            <b>20$</b>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
