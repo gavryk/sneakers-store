@@ -1,19 +1,25 @@
-import logo from '../src/img/sneakersLogo.png';
-import cartIcon from '../src/img/cart-icon.svg';
-import userIcon from '../src/img/user-icon.svg';
-import heartIcon from './img/heart-unliked.svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
+
 import heartLikedIcon from './img/heart-liked.svg';
 import checkedIcon from './img/checked-icon.svg';
-import removeIcon from './img/remove-icon.svg';
 import plusIcon from '../src/img/plus.svg';
 import searchIcon from '../src/img/search-icon.svg';
+import Header from "./components/Header/Header";
+
 
 function App() {
     return (
         <div className="wrapper clear">
             <div className="drawer-overlay">
                 <div className="drawer p-30 d-flex flex-column">
-                    <h2 className='mb-30'>Cart</h2>
+                    <div className="mb-30 drawer-title d-flex justify-between align-center">
+                        <h2>Cart</h2>
+                        <button className="button removeBtn">
+                            <FontAwesomeIcon icon={faTimes} />
+                        </button>
+                    </div>
 
                     <div className="cart-items flex">
                         <div className="cart-item p-15 d-flex align-center justify-between mb-20">
@@ -28,7 +34,7 @@ function App() {
                                 <b>100$</b>
                             </div>
                             <button className="button removeBtn">
-                                <img src={ removeIcon } alt="Remove"/>
+                                <FontAwesomeIcon icon={faTimes} />
                             </button>
                         </div>
 
@@ -44,7 +50,7 @@ function App() {
                                 <b>100$</b>
                             </div>
                             <button className="button removeBtn">
-                                <img src={ removeIcon } alt="Remove"/>
+                                <FontAwesomeIcon icon={faTimes} />
                             </button>
                         </div>
                     </div>
@@ -67,28 +73,7 @@ function App() {
                 </div>
             </div>
 
-
-            <header className='d-flex justify-between p-40'>
-                <div id="logo" className='d-flex align-center'>
-                    <img className='logoImage mr-10' src={ logo } alt=""/>
-                    <div className="logoText">
-                        <h3 className='text-uppercase'>React Sneakers</h3>
-                        <span className='opacity-5'>Shop of the Best Sneakers</span>
-                    </div>
-                </div>
-                <ul className='rightHeader d-flex align-center'>
-                    <li className='mr-20 d-flex align-center'>
-                        <img className='icon mr-5' src={ cartIcon } alt="Cart"/>
-                        <span>500$</span>
-                    </li>
-                    <li className='mr-20'>
-                        <img className='icon' src={ heartIcon } alt="Like"/>
-                    </li>
-                    <li>
-                        <img className='icon' src={ userIcon } alt="User"/>
-                    </li>
-                </ul>
-            </header>
+            <Header/>
 
             <div className="content p-40">
                 <div className='mb-40 d-flex justify-between align-center'>
@@ -104,7 +89,7 @@ function App() {
                     <div className="card">
                         <div className="cardTop mb-15 text-center">
                             <button className='button button-like'>
-                                <img width={11} height={11} src={ heartIcon } alt="Add"/>
+                                <FontAwesomeIcon icon={farHeart} />
                             </button>
                             <img width={130} height={130} src='img/sneakers/1.png' alt="Sneakers"/>
                             <h5>Nike Blazer Mid Suede</h5>
@@ -122,7 +107,7 @@ function App() {
                     <div className="card">
                         <div className="cardTop mb-15 text-center">
                             <button className='button button-like'>
-                                <img width={11} height={11} src={ heartIcon } alt="Add"/>
+                                <FontAwesomeIcon icon={farHeart} />
                             </button>
                             <img width={130} height={130} src='img/sneakers/2.png' alt="Sneaker"/>
                             <h5>Nike Air Max 270</h5>
@@ -140,7 +125,7 @@ function App() {
                     <div className="card">
                         <div className="cardTop mb-15 text-center">
                             <button className='button button-like'>
-                                <img width={11} height={11} src={ heartIcon } alt="Add"/>
+                                <FontAwesomeIcon icon={farHeart} />
                             </button>
                             <img width={130} height={130} src='img/sneakers/3.png' alt="Sneaker"/>
                             <h5>Nike Blazer Mid Suede</h5>
@@ -158,7 +143,7 @@ function App() {
                     <div className="card">
                         <div className="cardTop mb-15 text-center">
                             <button className='button button-like'>
-                                <img width={11} height={11} src={ heartIcon } alt="Add"/>
+                                <FontAwesomeIcon icon={farHeart} />
                             </button>
                             <img width={130} height={130} src='img/sneakers/4.png' alt="Sneaker"/>
                             <h5>Puma X Aka Boku Future Rider</h5>

@@ -1,0 +1,18 @@
+header {
+  border-bottom: 1px solid #EAEAEA;
+  #logo {
+    .logoImage {
+      max-width: 40px;
+      max-height: 40px;
+      object-fit: cover;
+    }
+  }
+  .rightHeader {
+    li {
+      .icon {
+        max-height: 18px;
+        max-width: 18px;
+      }
+    }
+  }
+}
