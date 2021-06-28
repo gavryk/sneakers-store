@@ -1,18 +1,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
-
-import heartLikedIcon from './img/heart-liked.svg';
-import checkedIcon from './img/checked-icon.svg';
-import plusIcon from '../src/img/plus.svg';
 import searchIcon from '../src/img/search-icon.svg';
 import Header from "./components/Header/Header";
+import Card from "./components/Cards/Card/Card";
+import Cards from "./components/Cards/Cards";
 
 
 function App() {
     return (
         <div className="wrapper clear">
-            <div className="drawer-overlay">
+            <div className="drawer-overlay" style={{ display: 'none' }}>
                 <div className="drawer p-30 d-flex flex-column">
                     <div className="mb-30 drawer-title d-flex justify-between align-center">
                         <h2>Cart</h2>
@@ -85,80 +82,7 @@ function App() {
                     </div>
                 </div>
 
-                <div className="cardsWrapper d-flex justify-between">
-                    <div className="card">
-                        <div className="cardTop mb-15 text-center">
-                            <button className='button button-like'>
-                                <FontAwesomeIcon icon={farHeart} />
-                            </button>
-                            <img width={130} height={130} src='img/sneakers/1.png' alt="Sneakers"/>
-                            <h5>Nike Blazer Mid Suede</h5>
-                        </div>
-                        <div className="cardBottom d-flex justify-between align-center">
-                            <div className='d-flex flex-column'>
-                                <span>Price:</span>
-                                <b>100$</b>
-                            </div>
-                            <button className='button'>
-                                <img width={11} height={11} src={ plusIcon } alt="Add"/>
-                            </button>
-                        </div>
-                    </div>
-                    <div className="card">
-                        <div className="cardTop mb-15 text-center">
-                            <button className='button button-like'>
-                                <FontAwesomeIcon icon={farHeart} />
-                            </button>
-                            <img width={130} height={130} src='img/sneakers/2.png' alt="Sneaker"/>
-                            <h5>Nike Air Max 270</h5>
-                        </div>
-                        <div className="cardBottom d-flex justify-between align-center">
-                            <div className='d-flex flex-column'>
-                                <span>Price:</span>
-                                <b>150$</b>
-                            </div>
-                            <button className='button'>
-                                <img width={11} height={11} src={ plusIcon } alt="Add"/>
-                            </button>
-                        </div>
-                    </div>
-                    <div className="card">
-                        <div className="cardTop mb-15 text-center">
-                            <button className='button button-like'>
-                                <FontAwesomeIcon icon={farHeart} />
-                            </button>
-                            <img width={130} height={130} src='img/sneakers/3.png' alt="Sneaker"/>
-                            <h5>Nike Blazer Mid Suede</h5>
-                        </div>
-                        <div className="cardBottom d-flex justify-between align-center">
-                            <div className='d-flex flex-column'>
-                                <span>Price:</span>
-                                <b>300$</b>
-                            </div>
-                            <button className='button'>
-                                <img width={11} height={11} src={ plusIcon } alt="Add"/>
-                            </button>
-                        </div>
-                    </div>
-                    <div className="card">
-                        <div className="cardTop mb-15 text-center">
-                            <button className='button button-like'>
-                                <FontAwesomeIcon icon={farHeart} />
-                            </button>
-                            <img width={130} height={130} src='img/sneakers/4.png' alt="Sneaker"/>
-                            <h5>Puma X Aka Boku Future Rider</h5>
-                        </div>
-                        <div className="cardBottom d-flex justify-between align-center">
-                            <div className='d-flex flex-column'>
-                                <span>Price:</span>
-                                <b>220$</b>
-                            </div>
-                            <button className='button'>
-                                <img width={11} height={11} src={ plusIcon } alt="Add"/>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                <Cards />
             </div>
         </div>
     );
