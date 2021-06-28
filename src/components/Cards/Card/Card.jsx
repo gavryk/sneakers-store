@@ -4,7 +4,7 @@ import plusIcon from "../../../img/plus.svg";
 
 function Card() {
     return (
-        <div className="card">
+        <div className="card mb-20">
             <div className="cardTop mb-15 text-center">
                 <button className='button button-like'>
                     <FontAwesomeIcon icon={farHeart} />
