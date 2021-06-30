@@ -24,7 +24,10 @@ function Cards() {
                 {
                     sneakers.map(card => {
                         return (
-                            <Card name={ card.name } price={ card.price } image={ card.image } />
+                            <Card
+                                name={ card.name }
+                                price={ card.price }
+                                image={ card.image } key={ card.index } />
                         )
                     })
                 }
