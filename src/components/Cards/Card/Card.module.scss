@@ -29,5 +29,12 @@
     b {
       font-size: 14px;
     }
+
+    .addProd {
+      opacity: .8;
+      &:hover {
+        opacity: 1;
+      }
+    }
   }
 }

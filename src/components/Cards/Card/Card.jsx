@@ -20,7 +20,7 @@ function Card(props) {
                     <span>Price:</span>
                     <b>{ props.price }$</b>
                 </div>
-                <button className='button' onClick={ props.cardInfo }>
+                <button className={ styles.addProd + ' button' } onClick={ props.cardInfo }>
                     <img width={11} height={11} src={ plusIcon } alt="Add"/>
                 </button>
             </div>
