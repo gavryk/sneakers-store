@@ -2,10 +2,26 @@ import Card from "./Card/Card";
 import searchIcon from "../../img/search-icon.svg";
 
 const sneakers = [
-    {name: 'Nike Blazer Mid Suede', image: 'img/sneakers/1.png', price: 1000,},
-    {name: 'Nike Air Max 270', image: 'img/sneakers/2.png', price: 800,},
-    {name: 'Nike Blazer Mid Suede', image: 'img/sneakers/3.png', price: 1200,},
-    {name: 'Puma X Aka Boku Future Rider', image: 'img/sneakers/4.png', price: 1500,},
+    {
+        title: 'Nike Blazer Mid Suede',
+        image: 'img/sneakers/1.png',
+        price: 1000,
+    },
+    {
+        title: 'Nike Air Max 270',
+        image: 'img/sneakers/2.png',
+        price: 800,
+    },
+    {
+        title: 'Nike Blazer Mid Suede',
+        image: 'img/sneakers/3.png',
+        price: 1200,
+    },
+    {
+        title: 'Puma X Aka Boku Future Rider',
+        image: 'img/sneakers/4.png',
+        price: 1500,
+    },
 ];
 
 function Cards() {
@@ -22,12 +38,15 @@ function Cards() {
 
             <div className="cardsWrapper d-flex justify-between flex-wrap">
                 {
-                    sneakers.map(card => {
+                    sneakers.map((card, index) => {
                         return (
                             <Card
-                                name={ card.name }
+                                title={ card.title }
                                 price={ card.price }
-                                image={ card.image } key={ card.index } />
+                                image={ card.image }
+                                key={ ++index }
+                                cardInfo={ () => { console.log(card) } }
+                            />
                         )
                     })
                 }
