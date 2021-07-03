@@ -45,7 +45,8 @@ function Cards() {
                                 price={ card.price }
                                 image={ card.image }
                                 key={ ++index }
-                                cardInfo={ () => { console.log(card) } }
+                                onLikeClick={ () => { alert('Add To Favorite Products') } }
+                                onPlusClick={ () => { console.log(card) } }
                             />
                         )
                     })

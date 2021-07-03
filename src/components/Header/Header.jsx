@@ -15,7 +15,7 @@ function Header() {
                 </div>
             </div>
             <ul className='rightHeader d-flex align-center'>
-                <li className='mr-20 d-flex align-center'>
+                <li className='mr-20 d-flex align-center cu-p'>
                     <img className='icon mr-5' src={ cartIcon } alt="Cart"/>
                     <span>500$</span>
                 </li>
