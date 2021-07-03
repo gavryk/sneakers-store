@@ -5,7 +5,8 @@ import Drawer from "./components/Drawer/Drawer";
 
 
 function App() {
-    let [sneakers, setSneakers] = React.useState([])
+    let [sneakers, setSneakers] = React.useState([]);
+    let [cartSneakers, setCartSneakers] = React.useState([]);
     const [cartOpened, setCartOpened] = React.useState(false);
 
     React.useEffect(() => {
@@ -18,11 +19,15 @@ function App() {
             })
     }, []);
 
+    const onAddToCart = (products) => {
+        setCartSneakers(prev => [...prev, products]);
+    }
+
     return (
         <div className="wrapper clear">
-            { cartOpened && <Drawer onClose={ () => { setCartOpened(false) } } /> }
+            { cartOpened && <Drawer items={ cartSneakers } onClose={ () => { setCartOpened(false) } } /> }
             <Header onClickCart={ () => { setCartOpened(true) } } />
-            <Cards sneakers={ sneakers }/>
+            <Cards addCart={ onAddToCart } sneakers={ sneakers }/>
         </div>
     );
 }

@@ -23,7 +23,7 @@ function Cards(props) {
                                 image={ card.image }
                                 key={ ++index }
                                 onLikeClick={ () => { alert('Add To Favorite Products') } }
-                                onPlusClick={ () => { console.log(card) } }
+                                onPlusClick={ product => { props.addCart(product) } }
                             />
                         )
                     })
