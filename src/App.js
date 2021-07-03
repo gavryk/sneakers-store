@@ -9,8 +9,8 @@ function App() {
 
     return (
         <div className="wrapper clear">
-            { cartOpened ? <Drawer /> : null }
-            <Header />
+            { cartOpened && <Drawer onClose={ () => { setCartOpened(false) } } /> }
+            <Header onClickCart={ () => { setCartOpened(true) } } />
             <Cards />
         </div>
     );

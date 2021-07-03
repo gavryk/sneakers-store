@@ -1,13 +1,13 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes} from "@fortawesome/free-solid-svg-icons";
 
-function Drawer() {
+function Drawer(props) {
     return (
         <div className="drawer-overlay">
             <div className="drawer p-30 d-flex flex-column">
                 <div className="mb-30 drawer-title d-flex justify-between align-center">
                     <h2>Cart</h2>
-                    <button className="button removeBtn">
+                    <button className="button removeBtn" onClick={ props.onClose }>
                         <FontAwesomeIcon icon={faTimes} />
                     </button>
                 </div>
