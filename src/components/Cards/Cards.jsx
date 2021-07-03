@@ -1,9 +1,7 @@
 import Card from "./Card/Card";
 import searchIcon from "../../img/search-icon.svg";
 
-const sneakers = [];
-
-function Cards() {
+function Cards(props) {
     return (
         <div className="content p-40">
             <div className='mb-40 d-flex justify-between align-center'>
@@ -15,9 +13,9 @@ function Cards() {
                 </div>
             </div>
 
-            <div className="cardsWrapper d-flex justify-between flex-wrap">
+            <div className="cardsWrapper d-flex flex-wrap">
                 {
-                    sneakers.map((card, index) => {
+                    props.sneakers.map((card, index) => {
                         return (
                             <Card
                                 title={ card.title }

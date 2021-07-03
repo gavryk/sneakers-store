@@ -6,8 +6,6 @@ import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import {faCheck} from "@fortawesome/free-solid-svg-icons";
 import styles from './Card.module.scss';
 
-console.log(styles)
-
 function Card(props) {
     const [isAdded, setIsAdded] = React.useState(false);
     const [isLiked, setIsLiked] = React.useState(false);
@@ -21,7 +19,7 @@ function Card(props) {
     }
 
     return (
-        <div className={ styles.card }>
+        <div className={`${styles.card} mb-30 mr-20`}>
             <div className={ styles.cardTop + ' mb-15 text-center' }>
                 <button className={`button ${styles.buttonLike} ${ isLiked ? styles.isLiked : '' }`} onClick={ handleLike }>
                     {
