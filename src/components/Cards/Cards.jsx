@@ -3,7 +3,7 @@ import searchIcon from "../../img/search-icon.svg";
 
 function Cards(props) {
     return (
-        <div className="content p-40">
+        <div>
             <div className='mb-40 d-flex justify-between align-center'>
                 <h2>All Sneakers</h2>
 

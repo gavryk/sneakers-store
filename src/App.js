@@ -1,7 +1,9 @@
 import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 import Header from "./components/Header/Header";
 import Cards from "./components/Cards/Cards";
 import Drawer from "./components/Drawer/Drawer";
+import Favorite from "./components/Favorite/Favorite";
 
 
 function App() {
@@ -27,7 +29,16 @@ function App() {
         <div className="wrapper clear">
             { cartOpened && <Drawer items={ cartSneakers } onClose={ () => { setCartOpened(false) } } /> }
             <Header onClickCart={ () => { setCartOpened(true) } } />
-            <Cards addCart={ onAddToCart } sneakers={ sneakers }/>
+            <div className="content p-40">
+                <Switch>
+                    <Route exact path='/'>
+                        <Cards addCart={ onAddToCart } sneakers={ sneakers }/>
+                    </Route>
+                    <Route path='/favorite'>
+                        <Favorite />
+                    </Route>
+                </Switch>
+            </div>
         </div>
     );
 }
