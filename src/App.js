@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from "axios";
 import { Route, Switch } from 'react-router-dom';
 import Header from "./components/Header/Header";
 import Cards from "./components/Cards/Cards";
@@ -13,13 +14,8 @@ function App() {
     const [cartOpened, setCartOpened] = React.useState(false);
 
     React.useEffect(() => {
-        fetch('https://60e056b96b689e001788ca00.mockapi.io/items')
-            .then(res => {
-                return res.json();
-            })
-            .then(json => {
-                setSneakers(json);
-            })
+        axios.get('https://60e056b96b689e001788ca00.mockapi.io/items')
+            .then(res => setSneakers(res.data));
     }, []);
 
     const onAddToCart = (products) => {
