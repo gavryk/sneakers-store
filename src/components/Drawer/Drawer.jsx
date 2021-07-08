@@ -1,7 +1,7 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes} from "@fortawesome/free-solid-svg-icons";
 
-function Drawer({ onClose, items = [] }) {
+function Drawer({ onClose, onRemoveItem, items = [] }) {
     return (
         <div className="drawer-overlay">
             <div className="drawer p-30 d-flex flex-column">
@@ -27,7 +27,7 @@ function Drawer({ onClose, items = [] }) {
                                         <h5 className='mb-5'>{ item.title }</h5>
                                         <b>{ item.price }$</b>
                                     </div>
-                                    <button className="button removeBtn">
+                                    <button className="button removeBtn" onClick={ () => onRemoveItem(item.id) }>
                                         <FontAwesomeIcon icon={faTimes} />
                                     </button>
                                 </div>
