@@ -165,4 +165,16 @@ body {
       }
     }
   }
+
+  .cart-empty {
+    height: 100%;
+    text-align: center;
+    img {
+      max-width: 150px;
+      margin-bottom: 20px;
+    }
+    h1, p {
+      padding-bottom: 10px;
+    }
+  }
 }
