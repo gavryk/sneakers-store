@@ -9,6 +9,7 @@ import Favorite from "./components/Favorite/Favorite";
 function App() {
     let [sneakers, setSneakers] = React.useState([]);
     let [cartSneakers, setCartSneakers] = React.useState([]);
+    let [searchValue, setSearchValue] = React.useState('');
     const [cartOpened, setCartOpened] = React.useState(false);
 
     React.useEffect(() => {
@@ -25,14 +26,26 @@ function App() {
         setCartSneakers(prev => [...prev, products]);
     }
 
+    const onChangeSearchInput = (event) => {
+        setSearchValue(event.target.value);
+    };
+
     return (
-        <div className="wrapper clear">
-            { cartOpened && <Drawer items={ cartSneakers } onClose={ () => { setCartOpened(false) } } /> }
-            <Header onClickCart={ () => { setCartOpened(true) } } />
+        <div className={`wrapper clear`}>
+            { cartOpened && <Drawer items={ cartSneakers } onClose={ () => { document.body.classList.remove('body-fixed'); setCartOpened(false) } } /> }
+            <Header onClickCart={ () => {
+                document.body.classList.add('body-fixed');
+                setCartOpened(true) }
+            } />
             <div className="content p-40">
                 <Switch>
                     <Route exact path='/'>
-                        <Cards addCart={ onAddToCart } sneakers={ sneakers }/>
+                        <Cards
+                            searchText={ searchValue }
+                            changeValue={ onChangeSearchInput }
+                            setSearchValue={ setSearchValue }
+                            addCart={ onAddToCart }
+                            sneakers={ sneakers }/>
                     </Route>
                     <Route path='/favorite'>
                         <Favorite />

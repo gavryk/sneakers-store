@@ -30,7 +30,7 @@ function Card({image, title, price, onLikeClick, onPlusClick }) {
                     }
                 </button>
                 <img width={130} height={130} src={ image } alt="Sneakers"/>
-                <h5>{ title }</h5>
+                <h5>{ title}</h5>
             </div>
             <div className={styles.cardBottom + " d-flex justify-between align-center"}>
                 <div className='d-flex flex-column'>
