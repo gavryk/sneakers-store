@@ -16,11 +16,13 @@ function Drawer({ onClose, onRemoveItem, items = [] }) {
                 {
                     items.length > 0
                         ? <>
-                            <div className="cart-items d-flex justify-between flex-column">
+                            <div className="cart-items d-flex justify-between flex-column flex">
                                 {
-                                    items.map(item => {
+                                    items.map((item, index )=> {
                                         return (
-                                            <div className="cart-item p-15 d-flex align-center justify-between mb-20">
+                                            <div
+                                                key={ index + 'dx' }
+                                                className="cart-item p-15 d-flex align-center justify-between mb-20">
                                                 <img
                                                     className='mr-10 cartItemImage'
                                                     width={70}

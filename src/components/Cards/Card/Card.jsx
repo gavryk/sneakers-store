@@ -16,6 +16,7 @@ function Card({image, title, price, onLikeClick, onPlusClick }) {
     }
 
     const handleLike = () => {
+        onLikeClick({ image, title, price });
         setIsLiked(!isLiked);
     }
 

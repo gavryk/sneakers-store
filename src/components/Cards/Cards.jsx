@@ -32,7 +32,7 @@ function Cards(props) {
                                 price={ card.price }
                                 image={ card.image }
                                 key={ index }
-                                onLikeClick={ () => { alert('Add To Favorite Products') } }
+                                onLikeClick={ like => { props.addFavorite(like) } }
                                 onPlusClick={ product => { props.addCart(product) } }
                             />
                         )

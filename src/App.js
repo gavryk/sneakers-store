@@ -8,10 +8,16 @@ import Favorite from "./components/Favorite/Favorite";
 
 
 function App() {
+    //All Products hook
     let [sneakers, setSneakers] = React.useState([]);
+    //Cart Products Hook
     let [cartSneakers, setCartSneakers] = React.useState([]);
+    //Search Product Hook
     let [searchValue, setSearchValue] = React.useState('');
+    //Cart Opened Hook
     const [cartOpened, setCartOpened] = React.useState(false);
+    //Favorite Hook
+    const [likedSneakers, setLikedSneakers] = React.useState([]);
 
     //Render Once
     React.useEffect(() => {
@@ -38,6 +44,12 @@ function App() {
         setSearchValue(event.target.value);
     };
 
+    //Add Favorite Product
+    const onAddFavorite = (products) => {
+        axios.post('https://60e056b96b689e001788ca00.mockapi.io/favorite', products);
+        setLikedSneakers( prev => [...prev, products] );
+    }
+
     return (
         <div className={`wrapper clear`}>
             {
@@ -60,6 +72,7 @@ function App() {
                             changeValue={ onChangeSearchInput }
                             setSearchValue={ setSearchValue }
                             addCart={ onAddToCart }
+                            addFavorite={ onAddFavorite }
                             sneakers={ sneakers }/>
                     </Route>
                     <Route path='/favorite'>
