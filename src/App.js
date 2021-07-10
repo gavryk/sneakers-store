@@ -50,13 +50,17 @@ function App() {
 
     //Add Favorite Product
     const onAddFavorite = async (products) => {
-        if (likedSneakers.find( favProd => favProd.id === products.id )) {
-            axios.delete(`${ apiURL }/favorite/${products.id}`);
-        } else {
-            let { data } = await axios.post(`${ apiURL }/favorite`, products);
-            setLikedSneakers( prev => [...prev, data] );
-        }
-    }
+       try {
+           if (likedSneakers.find( favProd => favProd.id === products.id )) {
+               axios.delete(`${ apiURL }/favorite/${products.id}`);
+           } else {
+               let { data } = await axios.post(`${ apiURL }/favorite`, products);
+               setLikedSneakers( prev => [...prev, data] );
+           }
+       } catch(error) {
+           alert('failed to add favorites');
+       }
+    };
 
     return (
         <div className={`wrapper clear`}>
