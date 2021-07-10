@@ -19,10 +19,10 @@ function Favorite(props) {
                         .map((card, index) => {
                             return (
                                 <Card
-                                    title={ card.title }
-                                    price={ card.price }
-                                    image={ card.image }
+                                    {...card}
                                     key={ index }
+                                    onLikeClick={ like => { props.addFavorite(like) } }
+                                    isFavorite={ props.isFavorite }
                                 />
                             )
                         })

@@ -49,9 +49,13 @@ function App() {
     };
 
     //Add Favorite Product
-    const onAddFavorite = (products) => {
-        axios.post(`${ apiURL }/favorite`, products);
-        setLikedSneakers( prev => [...prev, products] );
+    const onAddFavorite = async (products) => {
+        if (likedSneakers.find( favProd => favProd.id === products.id )) {
+            axios.delete(`${ apiURL }/favorite/${products.id}`);
+        } else {
+            let { data } = await axios.post(`${ apiURL }/favorite`, products);
+            setLikedSneakers( prev => [...prev, data] );
+        }
     }
 
     return (
@@ -80,7 +84,10 @@ function App() {
                     />
                 </Route>
                 <Route path='/favorite'>
-                    <Favorite items={ likedSneakers } />
+                    <Favorite
+                        isFavorite={ true }
+                        items={ likedSneakers }
+                        addFavorite={ onAddFavorite } />
                 </Route>
             </Switch>
         </div>

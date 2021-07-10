@@ -16,7 +16,7 @@ function Drawer({ onClose, onRemoveItem, items = [] }) {
                 {
                     items.length > 0
                         ? <>
-                            <div className="cart-items d-flex justify-between flex-column flex">
+                            <div className="cart-items d-flex flex-column flex">
                                 {
                                     items.map((item, index )=> {
                                         return (
