@@ -1,9 +1,9 @@
-import React from 'react';
+
 
 function Favorite() {
     return (
-        <div>
-            <h2>Favorite Products</h2>
+        <div className="content p-40">
+            <h2>Favorites</h2>
         </div>
     )
 }
