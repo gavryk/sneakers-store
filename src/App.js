@@ -27,6 +27,8 @@ function App() {
             .then(res => setSneakers(res.data));
         axios.get(`${ apiURL }/cart`)
             .then(res => setCartSneakers(res.data));
+        axios.get(`${ apiURL }/favorite`)
+            .then(res => setLikedSneakers(res.data));
     }, []);
 
     //Add To Cart
@@ -78,7 +80,7 @@ function App() {
                     />
                 </Route>
                 <Route path='/favorite'>
-                    <Favorite />
+                    <Favorite items={ likedSneakers } />
                 </Route>
             </Switch>
         </div>
