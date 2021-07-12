@@ -3,7 +3,9 @@ import Card from "./Card/Card";
 function Cards(props) {
 
     const renderSneakers = () => {
-        const filteredSneakers = props.sneakers.filter(card => card.title.toLowerCase().includes(props.searchText.toLowerCase()))
+        //Filterd Items
+        const filteredSneakers = props.sneakers.filter(card => card.title.toLowerCase().includes(props.searchText.toLowerCase()));
+
         return (
             props.isLoading
             ? [...Array(10)]
