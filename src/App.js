@@ -24,12 +24,17 @@ function App() {
 
     //Render Once
     React.useEffect(() => {
-        axios.get(`${ apiURL }/items`)
-            .then(res => setSneakers(res.data));
-        axios.get(`${ apiURL }/cart`)
-            .then(res => setCartSneakers(res.data));
-        axios.get(`${ apiURL }/favorite`)
-            .then(res => setLikedSneakers(res.data));
+        async function fetchData() {
+            const cartResp = await axios.get(`${ apiURL }/cart`);
+            const favoriteResp = await axios.get(`${ apiURL }/favorite`);
+            const sneakerResp = await axios.get(`${ apiURL }/items`);
+
+            setCartSneakers(cartResp.data);
+            setLikedSneakers(favoriteResp.data);
+            setSneakers(sneakerResp.data);
+        }
+
+        fetchData();
     }, []);
 
     //Add To Cart

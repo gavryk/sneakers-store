@@ -15,7 +15,7 @@ function Cards(props) {
                                 onLikeClick={ like => { props.addFavorite(like) } }
                                 onPlusClick={ product => { props.addCart(product) } }
                                 isFavorite={ props.isFavorite }
-                                inCart
+                                inCart={ props.cartSneakers.some(item => Number(item.id) === Number(card.id)) }
                             />
                         )
                     })
