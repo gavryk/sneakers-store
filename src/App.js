@@ -21,6 +21,8 @@ function App() {
     const [cartOpened, setCartOpened] = React.useState(false);
     //Favorite Hook
     const [likedSneakers, setLikedSneakers] = React.useState([]);
+    //Loading
+    const [isLoading, setIsLoading] = React.useState(true);
 
     //Render Once
     React.useEffect(() => {
@@ -28,6 +30,8 @@ function App() {
             const cartResp = await axios.get(`${ apiURL }/cart`);
             const favoriteResp = await axios.get(`${ apiURL }/favorite`);
             const sneakerResp = await axios.get(`${ apiURL }/items`);
+
+            setIsLoading(false);
 
             setCartSneakers(cartResp.data);
             setLikedSneakers(favoriteResp.data);
@@ -102,6 +106,7 @@ function App() {
                         addFavorite={ onAddFavorite }
                         sneakers={ sneakers }
                         cartSneakers={ cartSneakers }
+                        isLoading={ isLoading }
                     />
                 </Route>
                 <Route path='/favorite'>

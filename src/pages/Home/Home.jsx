@@ -9,7 +9,9 @@ function Home({ searchText,
  addCart,
  addFavorite,
  cartSneakers,
- sneakers }) {
+ sneakers,
+ isLoading
+}) {
     return (
         <div className="content p-30">
             <div className='mb-40 d-flex justify-between align-center'>
@@ -34,6 +36,7 @@ function Home({ searchText,
                 addFavorite={ addFavorite }
                 sneakers={ sneakers }
                 cartSneakers={ cartSneakers }
+                isLoading={ isLoading }
             />
         </div>
     )
