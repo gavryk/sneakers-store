@@ -8,6 +8,7 @@ function Home({ searchText,
  setSearchValue,
  addCart,
  addFavorite,
+ cartSneakers,
  sneakers }) {
     return (
         <div className="content p-30">
@@ -31,7 +32,9 @@ function Home({ searchText,
                 setSearchValue={ setSearchValue }
                 addCart={ addCart }
                 addFavorite={ addFavorite }
-                sneakers={ sneakers }/>
+                sneakers={ sneakers }
+                cartSneakers={ cartSneakers }
+            />
         </div>
     )
 }

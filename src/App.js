@@ -34,14 +34,25 @@ function App() {
 
     //Add To Cart
     const onAddToCart = (products) => {
-        axios.post(`${ apiURL }/cart`, products);
-        setCartSneakers(prev => [...prev, products]);
+        console.log(products);
+        try {
+            if (cartSneakers.find(item => Number(item.id) === Number(products.id))) {
+                // axios.delete(`${ apiURL }/cart/${ products.id }`);
+                // setCartSneakers(prev => prev.filter(item => Number(item.id) !== Number(products.id)));
+                onRemoveItem(products.id);
+            } else {
+                axios.post(`${ apiURL }/cart`, products);
+                setCartSneakers(prev => [...prev, products]);
+            }
+        } catch(err) {
+
+        }
     }
 
     //Remove Item From Cart
     const onRemoveItem = (id) => {
         axios.delete(`${ apiURL }/cart/${ id }`);
-        setCartSneakers(prev => prev.filter(item => item.id !== id));
+        setCartSneakers(prev => prev.filter(item => Number(item.id) !== Number(id)));
     }
 
     //Search Input Handler
@@ -72,14 +83,6 @@ function App() {
                     onClose={ () => { document.body.classList.remove('body-fixed'); setCartOpened(false) } }
                 />
             </CSSTransition>
-            {/*{*/}
-            {/*    cartOpened &&*/}
-            {/*    <Drawer*/}
-            {/*        items={ cartSneakers }*/}
-            {/*        onRemoveItem={ onRemoveItem }*/}
-            {/*        onClose={ () => { document.body.classList.remove('body-fixed'); setCartOpened(false) } }*/}
-            {/*    />*/}
-            {/*}*/}
             <Header onClickCart={ () => {
                 document.body.classList.add('body-fixed');
                 setCartOpened(true) }
@@ -93,6 +96,7 @@ function App() {
                         addCart={ onAddToCart }
                         addFavorite={ onAddFavorite }
                         sneakers={ sneakers }
+                        cartSneakers={ cartSneakers }
                     />
                 </Route>
                 <Route path='/favorite'>

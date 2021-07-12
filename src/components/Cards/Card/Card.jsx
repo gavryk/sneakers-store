@@ -6,12 +6,21 @@ import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import {faCheck} from "@fortawesome/free-solid-svg-icons";
 import styles from './Card.module.scss';
 
-function Card({id, image, title, price, onLikeClick, onPlusClick, isFavorite = false }) {
-    const [isAdded, setIsAdded] = React.useState(false);
+function Card({
+  id,
+  image,
+  title,
+  price,
+  onLikeClick,
+  onPlusClick,
+  isFavorite = false,
+  inCart =  false
+}) {
+    const [isAdded, setIsAdded] = React.useState(inCart);
     const [isLiked, setIsLiked] = React.useState(isFavorite);
 
     const handlePlus = () => {
-        onPlusClick({ image, title, price });
+        onPlusClick({ id, image, title, price });
         setIsAdded(!isAdded);
     }
 
