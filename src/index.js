@@ -6,10 +6,8 @@ import App from './App';
 import 'macro-css';
 
 ReactDOM.render(
-    <React.StrictMode>
-        <Router>
-            <App />
-        </Router>
-    </React.StrictMode>,
+    <Router>
+        <App />
+    </Router>,
   document.getElementById('root')
 );

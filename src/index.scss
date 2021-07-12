@@ -35,11 +35,15 @@ body {
 .wrapper {
   width: 1080px;
   max-width: 96%;
-  margin: 80px auto;
+  margin: 40px auto;
   background: #FFFFFF;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
   border-radius: 20px;
   .content {
+
+    .cardsWrapper {
+
+    }
     .search-block {
       border: 1px solid #F3F3F3;
       border-radius: 10px;
@@ -119,6 +123,7 @@ body {
   height: 100%;
   background-color: rgba(0, 0, 0, .5);
   z-index: 1;
+  transition: all .2s ease-in-out;
 }
 
 .drawer {
@@ -177,4 +182,21 @@ body {
       padding-bottom: 10px;
     }
   }
+}
+
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  opacity: 1;
+}
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit-active {
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-exit-active, {
+  transition: opacity 500ms, transform 500ms;
 }

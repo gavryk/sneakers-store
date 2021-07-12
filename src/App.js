@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import Drawer from "./components/Drawer/Drawer";
 import Favorite from "./pages/Favorite/Favorite";
 import Home from "./pages/Home/Home";
+import {CSSTransition} from "react-transition-group";
 
 
 function App() {
@@ -63,15 +64,22 @@ function App() {
     };
 
     return (
-        <div className={`wrapper clear`}>
-            {
-                cartOpened &&
+        <div className={`wrapper clear ${ cartOpened ? 'overlay' : '' }`}>
+            <CSSTransition in={ cartOpened } timeout={200} classNames="fade" unmountOnExit>
                 <Drawer
                     items={ cartSneakers }
                     onRemoveItem={ onRemoveItem }
                     onClose={ () => { document.body.classList.remove('body-fixed'); setCartOpened(false) } }
                 />
-            }
+            </CSSTransition>
+            {/*{*/}
+            {/*    cartOpened &&*/}
+            {/*    <Drawer*/}
+            {/*        items={ cartSneakers }*/}
+            {/*        onRemoveItem={ onRemoveItem }*/}
+            {/*        onClose={ () => { document.body.classList.remove('body-fixed'); setCartOpened(false) } }*/}
+            {/*    />*/}
+            {/*}*/}
             <Header onClickCart={ () => {
                 document.body.classList.add('body-fixed');
                 setCartOpened(true) }

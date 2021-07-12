@@ -10,7 +10,7 @@ function Home({ searchText,
  addFavorite,
  sneakers }) {
     return (
-        <div className="content p-40">
+        <div className="content p-30">
             <div className='mb-40 d-flex justify-between align-center'>
                 <h2>{ searchText ? `Search: "${ searchText }"` : 'All Sneakers' }</h2>
 
