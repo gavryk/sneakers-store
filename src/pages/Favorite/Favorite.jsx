@@ -3,10 +3,10 @@ import Card from "../../components/Cards/Card/Card";
 import {faChevronLeft} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { AppContext } from "../../App";
+import AppContext from "../../context";
 
 function Favorite(props) {
-    const state = React.useContext(AppContext);
+    const { likedSneakers } = React.useContext(AppContext);
 
     return (
         <div className="content p-40">
@@ -19,7 +19,7 @@ function Favorite(props) {
 
             <div className="cardsWrapper d-flex flex-wrap">
                 {
-                    props.items
+                    likedSneakers
                         .map((card, index) => {
                             return (
                                 <Card

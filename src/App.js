@@ -6,9 +6,7 @@ import Drawer from "./components/Drawer/Drawer";
 import Favorite from "./pages/Favorite/Favorite";
 import Home from "./pages/Home/Home";
 import {CSSTransition} from "react-transition-group";
-
-export const AppContext = React.createContext({});
-
+import AppContext from "./context";
 
 function App() {
     //DB Link
