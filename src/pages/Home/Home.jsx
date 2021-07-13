@@ -8,7 +8,6 @@ function Home({ searchText,
  setSearchValue,
  addCart,
  addFavorite,
- cartSneakers,
  sneakers,
  isLoading
 }) {
@@ -35,7 +34,6 @@ function Home({ searchText,
                 addCart={ addCart }
                 addFavorite={ addFavorite }
                 sneakers={ sneakers }
-                cartSneakers={ cartSneakers }
                 isLoading={ isLoading }
             />
         </div>

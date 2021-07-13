@@ -6,7 +6,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import AppContext from "../../context";
 
 function Favorite(props) {
-    const { likedSneakers } = React.useContext(AppContext);
+    const { likedSneakers, onAddFavorite, isSneakersLiked } = React.useContext(AppContext);
 
     return (
         <div className="content p-40">
@@ -25,8 +25,8 @@ function Favorite(props) {
                                 <Card
                                     {...card}
                                     key={ index }
-                                    onLikeClick={ like => { props.addFavorite(like) } }
-                                    isFavorite={ props.isFavorite }
+                                    onLikeClick={ like => { onAddFavorite(like) } }
+                                    isFavorite={ true }
                                 />
                             )
                         })

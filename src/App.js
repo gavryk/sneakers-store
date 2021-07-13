@@ -83,8 +83,12 @@ function App() {
        }
     };
 
+    const isSneakersAdded = (id) => {
+        return cartSneakers.some( item => Number(item.id) === Number(id));
+    }
+
     return (
-        <AppContext.Provider value={{ sneakers, cartSneakers, likedSneakers }}>
+        <AppContext.Provider value={{ sneakers, cartSneakers, likedSneakers, isSneakersAdded, onAddFavorite }}>
             <div className={`wrapper clear ${ cartOpened ? 'overlay' : '' }`}>
                 <CSSTransition in={ cartOpened } timeout={200} classNames="fade" unmountOnExit>
                     <Drawer
@@ -106,14 +110,11 @@ function App() {
                             addCart={ onAddToCart }
                             addFavorite={ onAddFavorite }
                             sneakers={ sneakers }
-                            cartSneakers={ cartSneakers }
                             isLoading={ isLoading }
                         />
                     </Route>
                     <Route path='/favorite'>
-                        <Favorite
-                            isFavorite={ true }
-                            addFavorite={ onAddFavorite } />
+                        <Favorite />
                     </Route>
                 </Switch>
             </div>

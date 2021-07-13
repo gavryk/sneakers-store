@@ -7,6 +7,8 @@ import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import {faCheck} from "@fortawesome/free-solid-svg-icons";
 import styles from './Card.module.scss';
 
+import AppContext from "../../../context";
+
 function Card({
   id,
   image,
@@ -15,15 +17,14 @@ function Card({
   onLikeClick,
   onPlusClick,
   isFavorite = false,
-  inCart =  false,
   loading = false
 }) {
-    const [isAdded, setIsAdded] = React.useState(inCart);
+
+    const { isSneakersAdded } = React.useContext(AppContext)
     const [isLiked, setIsLiked] = React.useState(isFavorite);
 
     const handlePlus = () => {
         onPlusClick({ id, image, title, price });
-        setIsAdded(!isAdded);
     }
 
     const handleLike = () => {
@@ -67,9 +68,9 @@ function Card({
                                 <span>Price:</span>
                                 <b>{ price }$</b>
                             </div>
-                            <button className={` ${styles.addProd} button ${isAdded ? styles.checked : '' }` } onClick={ handlePlus }>
+                            <button className={` ${styles.addProd} button ${ isSneakersAdded(id) ? styles.checked : '' }` } onClick={ handlePlus }>
                                 {
-                                    isAdded
+                                    isSneakersAdded(id)
                                         ? <FontAwesomeIcon icon={ faCheck } />
                                         : <FontAwesomeIcon icon={ faPlus } />
                                 }
