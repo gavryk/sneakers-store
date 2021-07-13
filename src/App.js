@@ -72,8 +72,9 @@ function App() {
     //Add Favorite Product
     const onAddFavorite = async (products) => {
        try {
-           if (likedSneakers.find( favProd => favProd.id === products.id )) {
+           if (likedSneakers.find( favProd => Number(favProd.id) === Number(products.id ))) {
                axios.delete(`${ apiURL }/favorite/${products.id}`);
+               setLikedSneakers(prev => prev.filter(item => Number(item.id) !== Number(products.id)));
            } else {
                let { data } = await axios.post(`${ apiURL }/favorite`, products);
                setLikedSneakers( prev => [...prev, data] );
