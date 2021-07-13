@@ -8,7 +8,7 @@ function Cards(props) {
 
         return (
             props.isLoading
-            ? [...Array(10)]
+            ? [...Array(8)]
             : filteredSneakers)
             .map((card, index) => {
                 return (

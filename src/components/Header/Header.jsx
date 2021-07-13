@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-import logo from "../../img/sneakersLogo.png";
+import logo from "../../img/sneakers-logo.png";
 import cartIcon from "../../img/cart-icon.svg";
 import heartIcon from "../../img/heart-unliked.svg";
 import userIcon from "../../img/user-icon.svg";
@@ -13,7 +13,7 @@ function Header(props) {
                 <div id="logo" className='d-flex align-center'>
                     <img className='logoImage mr-10' src={ logo } alt=""/>
                     <div className="logoText">
-                        <h3 className='text-uppercase'>React Sneakers</h3>
+                        <h3 className='text-uppercase'>Sneakers Store</h3>
                         <span className='opacity-5'>Shop of the Best Sneakers</span>
                     </div>
                 </div>
