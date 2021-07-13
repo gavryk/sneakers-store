@@ -1,9 +1,13 @@
+import React from "react";
 import Card from "../../components/Cards/Card/Card";
 import {faChevronLeft} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { AppContext } from "../../App";
 
 function Favorite(props) {
+    const state = React.useContext(AppContext);
+
     return (
         <div className="content p-40">
             <div className="d-flex align-center mb-40">

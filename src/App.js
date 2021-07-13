@@ -7,6 +7,8 @@ import Favorite from "./pages/Favorite/Favorite";
 import Home from "./pages/Home/Home";
 import {CSSTransition} from "react-transition-group";
 
+export const AppContext = React.createContext({});
+
 
 function App() {
     //DB Link
@@ -84,39 +86,40 @@ function App() {
     };
 
     return (
-        <div className={`wrapper clear ${ cartOpened ? 'overlay' : '' }`}>
-            <CSSTransition in={ cartOpened } timeout={200} classNames="fade" unmountOnExit>
-                <Drawer
-                    items={ cartSneakers }
-                    onRemoveItem={ onRemoveItem }
-                    onClose={ () => { document.body.classList.remove('body-fixed'); setCartOpened(false) } }
-                />
-            </CSSTransition>
-            <Header onClickCart={ () => {
-                document.body.classList.add('body-fixed');
-                setCartOpened(true) }
-            } />
-            <Switch>
-                <Route exact path='/'>
-                    <Home
-                        searchText={ searchValue }
-                        changeValue={ onChangeSearchInput }
-                        setSearchValue={ setSearchValue }
-                        addCart={ onAddToCart }
-                        addFavorite={ onAddFavorite }
-                        sneakers={ sneakers }
-                        cartSneakers={ cartSneakers }
-                        isLoading={ isLoading }
+        <AppContext.Provider value={{ sneakers, cartSneakers, likedSneakers }}>
+            <div className={`wrapper clear ${ cartOpened ? 'overlay' : '' }`}>
+                <CSSTransition in={ cartOpened } timeout={200} classNames="fade" unmountOnExit>
+                    <Drawer
+                        items={ cartSneakers }
+                        onRemoveItem={ onRemoveItem }
+                        onClose={ () => { document.body.classList.remove('body-fixed'); setCartOpened(false) } }
                     />
-                </Route>
-                <Route path='/favorite'>
-                    <Favorite
-                        isFavorite={ true }
-                        items={ likedSneakers }
-                        addFavorite={ onAddFavorite } />
-                </Route>
-            </Switch>
-        </div>
+                </CSSTransition>
+                <Header onClickCart={ () => {
+                    document.body.classList.add('body-fixed');
+                    setCartOpened(true) }
+                } />
+                <Switch>
+                    <Route exact path='/'>
+                        <Home
+                            searchText={ searchValue }
+                            changeValue={ onChangeSearchInput }
+                            setSearchValue={ setSearchValue }
+                            addCart={ onAddToCart }
+                            addFavorite={ onAddFavorite }
+                            sneakers={ sneakers }
+                            cartSneakers={ cartSneakers }
+                            isLoading={ isLoading }
+                        />
+                    </Route>
+                    <Route path='/favorite'>
+                        <Favorite
+                            isFavorite={ true }
+                            addFavorite={ onAddFavorite } />
+                    </Route>
+                </Switch>
+            </div>
+        </AppContext.Provider>
     );
 }
 
