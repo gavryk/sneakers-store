@@ -19,16 +19,16 @@ function Card({
   isFavorite = false,
   loading = false
 }) {
-
+    const obj = { id, parentId: id, title, image, price };
     const { isSneakersAdded } = React.useContext(AppContext)
     const [isLiked, setIsLiked] = React.useState(isFavorite);
 
     const handlePlus = () => {
-        onPlusClick({ id, image, title, price });
+        onPlusClick(obj);
     }
 
     const handleLike = () => {
-        onLikeClick({ id, image, title, price });
+        onLikeClick(obj);
         setIsLiked(!isLiked);
     }
 
@@ -61,7 +61,7 @@ function Card({
                                 }
                             </button>
                             <img width={130} height={130} src={ image } alt="Sneakers"/>
-                            <h5>{ title}</h5>
+                            <h5>{ title }</h5>
                         </div>
                         <div className={styles.cardBottom + " d-flex justify-between align-center"}>
                             <div className='d-flex flex-column'>

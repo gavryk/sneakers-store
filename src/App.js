@@ -43,9 +43,9 @@ function App() {
 
     //Add To Cart
     const onAddToCart = (products) => {
-        console.log(products);
         try {
-            if (cartSneakers.find(item => Number(item.id) === Number(products.id))) {
+            const findItem = cartSneakers.find((item) => Number(item.id) === Number(products.id));
+            if (findItem) {
                 // axios.delete(`${ apiURL }/cart/${ products.id }`);
                 // setCartSneakers(prev => prev.filter(item => Number(item.id) !== Number(products.id)));
                 onRemoveItem(products.id);
@@ -54,7 +54,7 @@ function App() {
                 setCartSneakers(prev => [...prev, products]);
             }
         } catch(err) {
-
+            alert(err);
         }
     }
 
@@ -87,21 +87,34 @@ function App() {
     const isSneakersAdded = (id) => {
         return cartSneakers.some( item => Number(item.id) === Number(id));
     }
+    //Open/Close Cart
+    const handleCart = () => {
+        let bodyClass = document.body.classList;
+        if (!bodyClass.contains('body-fixed')) {
+            bodyClass.add('body-fixed')
+        } else {
+            bodyClass.remove('body-fixed');
+        }
+        setCartOpened(!cartOpened);
+    }
 
     return (
-        <AppContext.Provider value={{ sneakers, cartSneakers, likedSneakers, isSneakersAdded, onAddFavorite }}>
+        <AppContext.Provider value={{
+            sneakers,
+            cartSneakers,
+            likedSneakers,
+            isSneakersAdded,
+            onAddFavorite,
+            handleCart
+        }}>
             <div className={`wrapper clear ${ cartOpened ? 'overlay' : '' }`}>
                 <CSSTransition in={ cartOpened } timeout={200} classNames="fade" unmountOnExit>
                     <Drawer
                         items={ cartSneakers }
                         onRemoveItem={ onRemoveItem }
-                        onClose={ () => { document.body.classList.remove('body-fixed'); setCartOpened(false) } }
                     />
                 </CSSTransition>
-                <Header onClickCart={ () => {
-                    document.body.classList.add('body-fixed');
-                    setCartOpened(true) }
-                } />
+                <Header />
                 <Switch>
                     <Route exact path='/'>
                         <Home

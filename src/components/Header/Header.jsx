@@ -1,3 +1,4 @@
+import React from "react";
 import { NavLink } from "react-router-dom";
 
 import logo from "../../img/sneakers-logo.png";
@@ -5,8 +6,11 @@ import cartIcon from "../../img/cart-icon.svg";
 import heartIcon from "../../img/heart-unliked.svg";
 import userIcon from "../../img/user-icon.svg";
 import './Header.scss';
+import AppContext from "../../context";
 
 function Header(props) {
+    const { handleCart } = React.useContext(AppContext);
+
     return (
         <header className='d-flex justify-between p-40'>
             <NavLink to='/'>
@@ -19,7 +23,7 @@ function Header(props) {
                 </div>
             </NavLink>
             <ul className='rightHeader d-flex align-center'>
-                <li className='mr-20 d-flex align-center cu-p' onClick={ props.onClickCart }>
+                <li className='mr-20 d-flex align-center cu-p' onClick={ handleCart }>
                     <img className='icon mr-5' src={ cartIcon } alt="Cart"/>
                     <span>500$</span>
                 </li>

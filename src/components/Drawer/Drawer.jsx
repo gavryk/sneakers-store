@@ -1,14 +1,19 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes} from "@fortawesome/free-solid-svg-icons";
-import emptyImg from '../../img/empty-cart.png';
+import React from "react";
+import Info from "../Info/Info";
+import AppContext from "../../context";
+import emptyImg from "../../img/empty-cart.png";
 
-function Drawer({ onClose, onRemoveItem, items = [] }) {
+function Drawer({ onRemoveItem, items = [] }) {
+    const { handleCart } = React.useContext(AppContext);
+
     return (
         <div className="drawer-overlay">
             <div className="drawer p-30 d-flex flex-column">
                 <div className="mb-30 drawer-title d-flex justify-between align-center">
                     <h2>Cart</h2>
-                    <button className="button removeBtn" onClick={ onClose }>
+                    <button className="button removeBtn" onClick={ handleCart }>
                         <FontAwesomeIcon icon={faTimes} />
                     </button>
                 </div>
@@ -57,14 +62,7 @@ function Drawer({ onClose, onRemoveItem, items = [] }) {
                                 <button className='btn greenBtn'>To Order</button>
                             </div>
                         </>
-                        : <div className="cart-empty d-flex justify-center align-center">
-                            <div>
-                                <img src={ emptyImg } alt="empty"/>
-                                <h1>Cart Empty</h1>
-                                <p>Add at least one pair of sneakers to order.</p>
-                                <button onClick={ onClose } className='btn greenBtn'>Back To Shop</button>
-                            </div>
-                        </div>
+                        : <Info title='Корзина пустая' description='Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ' image={ emptyImg }/>
                 }
             </div>
         </div>
