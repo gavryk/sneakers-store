@@ -6,7 +6,6 @@ import {faTimes} from "@fortawesome/free-solid-svg-icons";
 function Home({ searchText,
  changeValue,
  setSearchValue,
- addCart,
  addFavorite,
  sneakers,
  isLoading
@@ -31,7 +30,6 @@ function Home({ searchText,
                 searchText={ searchText }
                 changeValue={ changeValue }
                 setSearchValue={ setSearchValue }
-                addCart={ addCart }
                 addFavorite={ addFavorite }
                 sneakers={ sneakers }
                 isLoading={ isLoading }

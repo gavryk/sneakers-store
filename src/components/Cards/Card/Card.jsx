@@ -15,16 +15,15 @@ function Card({
   title,
   price,
   onLikeClick,
-  onPlusClick,
   isFavorite = false,
   loading = false
 }) {
-    const obj = { id, parentId: id, title, image, price };
-    const { isSneakersAdded } = React.useContext(AppContext)
+    const { isSneakersAdded, onAddToCart } = React.useContext(AppContext);
     const [isLiked, setIsLiked] = React.useState(isFavorite);
+    const obj = { id, parentId: id, title, image, price }
 
     const handlePlus = () => {
-        onPlusClick(obj);
+        onAddToCart(obj);
     }
 
     const handleLike = () => {

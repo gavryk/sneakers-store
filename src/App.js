@@ -44,17 +44,16 @@ function App() {
     //Add To Cart
     const onAddToCart = (products) => {
         try {
-            const findItem = cartSneakers.find((item) => Number(item.id) === Number(products.id));
+            const findItem = cartSneakers.find(item => Number(item.parentId) === Number(products.id));
             if (findItem) {
-                // axios.delete(`${ apiURL }/cart/${ products.id }`);
-                // setCartSneakers(prev => prev.filter(item => Number(item.id) !== Number(products.id)));
-                onRemoveItem(products.id);
+                axios.delete(`${ apiURL }/cart/${ products.id }`);
+                setCartSneakers(prev => prev.filter(item => Number(item.id) !== Number(products.id)));
             } else {
                 axios.post(`${ apiURL }/cart`, products);
                 setCartSneakers(prev => [...prev, products]);
             }
         } catch(err) {
-            alert(err);
+
         }
     }
 
@@ -85,7 +84,7 @@ function App() {
     };
 
     const isSneakersAdded = (id) => {
-        return cartSneakers.some( item => Number(item.id) === Number(id));
+        return cartSneakers.some( (item) => Number(item.parentId) === Number(id));
     }
     //Open/Close Cart
     const handleCart = () => {
@@ -105,7 +104,8 @@ function App() {
             likedSneakers,
             isSneakersAdded,
             onAddFavorite,
-            handleCart
+            handleCart,
+            onAddToCart
         }}>
             <div className={`wrapper clear ${ cartOpened ? 'overlay' : '' }`}>
                 <CSSTransition in={ cartOpened } timeout={200} classNames="fade" unmountOnExit>
@@ -121,7 +121,6 @@ function App() {
                             searchText={ searchValue }
                             changeValue={ onChangeSearchInput }
                             setSearchValue={ setSearchValue }
-                            addCart={ onAddToCart }
                             addFavorite={ onAddFavorite }
                             sneakers={ sneakers }
                             isLoading={ isLoading }
