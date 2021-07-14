@@ -88,24 +88,21 @@ function App() {
     }
     //Open/Close Cart
     const handleCart = () => {
-        let bodyClass = document.body.classList;
-        if (!bodyClass.contains('body-fixed')) {
-            bodyClass.add('body-fixed')
-        } else {
-            bodyClass.remove('body-fixed');
-        }
+        document.body.classList.toggle('body-fixed');
         setCartOpened(!cartOpened);
     }
 
     return (
         <AppContext.Provider value={{
+            apiURL,
             sneakers,
             cartSneakers,
+            setCartSneakers,
             likedSneakers,
             isSneakersAdded,
             onAddFavorite,
             handleCart,
-            onAddToCart
+            onAddToCart,
         }}>
             <div className={`wrapper clear ${ cartOpened ? 'overlay' : '' }`}>
                 <CSSTransition in={ cartOpened } timeout={200} classNames="fade" unmountOnExit>

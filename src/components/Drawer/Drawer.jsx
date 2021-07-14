@@ -4,9 +4,48 @@ import React from "react";
 import Info from "../Info/Info";
 import AppContext from "../../context";
 import emptyImg from "../../img/empty-cart.png";
+import orderCompleteImg from "../../img/complete-order-img.png";
+import axios from "axios";
 
 function Drawer({ onRemoveItem, items = [] }) {
-    const { handleCart } = React.useContext(AppContext);
+    const { handleCart, setCartSneakers, cartSneakers, apiURL } = React.useContext(AppContext);
+    const [orderId, setOrderId] = React.useState(null);
+    const [isOrderComplete, setIsOrderComplete] = React.useState(false);
+    const [isLoading, setIsLoading] = React.useState(false);
+
+    const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+    const onClickOrder = async () => {
+        try {
+            setIsLoading(true);
+            const { data } = await axios.post(`${apiURL}/order`, {
+                items: cartSneakers
+            });
+
+            //MockApi bug - do not allow this to happen
+            //Clear Cart in Server Side (MockApi)
+            // await axios.put(`${apiURL}/cart`, {});
+            setOrderId(data.id);
+            setIsOrderComplete(true);
+            setCartSneakers([]);
+
+            //solution
+            // cartSneakers.forEach((item) => {
+            //     axios.delete(`${apiURL}/cart/${item.id}`)
+            // })
+
+            //Optional solution so as not to get banned from MockApi
+            for (let i = 0; i < cartSneakers.length; i++) {
+                const item = cartSneakers[i];
+                await axios.delete(`${apiURL}/cart/${item.id}`);
+                await delay(1000);
+            }
+
+        } catch(err) {
+            alert(err);
+        }
+        setIsLoading(false);
+    }
 
     return (
         <div className="drawer-overlay">
@@ -59,10 +98,13 @@ function Drawer({ onRemoveItem, items = [] }) {
                                         <b>20$</b>
                                     </li>
                                 </ul>
-                                <button className='btn greenBtn'>To Order</button>
+                                <button disabled={ isLoading } onClick={ onClickOrder } className='btn greenBtn'>To Order</button>
                             </div>
                         </>
-                        : <Info title='Корзина пустая' description='Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ' image={ emptyImg }/>
+                        : <Info
+                            title={isOrderComplete ? 'Order Complete' : 'Cart Is Empty' }
+                            description={ isOrderComplete ? `Your order #${ orderId } will be delivered by courier soon.` : 'Add at least one pair of sneakers to order.'}
+                            image={ isOrderComplete ? orderCompleteImg : emptyImg }/>
                 }
             </div>
         </div>
