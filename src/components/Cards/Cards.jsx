@@ -16,8 +16,6 @@ function Cards(props) {
                     <Card
                         {...card}
                         key={ index }
-                        onLikeClick={ like => { props.addFavorite(like) } }
-                        isFavorite={ props.isFavorite }
                         loading={ props.isLoading }
                     />
                 )

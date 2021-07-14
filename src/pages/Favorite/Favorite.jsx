@@ -5,8 +5,8 @@ import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import AppContext from "../../context";
 
-function Favorite(props) {
-    const { likedSneakers, onAddFavorite, isSneakersLiked } = React.useContext(AppContext);
+function Favorite() {
+    const { likedSneakers } = React.useContext(AppContext);
 
     return (
         <div className="content p-40">
@@ -25,8 +25,6 @@ function Favorite(props) {
                                 <Card
                                     {...card}
                                     key={ index }
-                                    onLikeClick={ like => { onAddFavorite(like) } }
-                                    isFavorite={ true }
                                 />
                             )
                         })

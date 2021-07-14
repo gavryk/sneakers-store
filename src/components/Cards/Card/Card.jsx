@@ -14,11 +14,10 @@ function Card({
   image,
   title,
   price,
-  onLikeClick,
   isFavorite = false,
   loading = false
 }) {
-    const { isSneakersAdded, onAddToCart } = React.useContext(AppContext);
+    const { isSneakersAdded, onAddToCart, onAddFavorite } = React.useContext(AppContext);
     const [isLiked, setIsLiked] = React.useState(isFavorite);
     const obj = { id, parentId: id, title, image, price }
 
@@ -27,7 +26,7 @@ function Card({
     }
 
     const handleLike = () => {
-        onLikeClick(obj);
+        onAddFavorite(obj);
         setIsLiked(!isLiked);
     }
 
