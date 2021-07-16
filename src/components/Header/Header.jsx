@@ -9,7 +9,11 @@ import './Header.scss';
 import AppContext from "../../context";
 
 function Header(props) {
-    const { handleCart } = React.useContext(AppContext);
+    const { handleCart, cartSneakers } = React.useContext(AppContext);
+
+    let totalPrice = cartSneakers.reduce((sum, item) => {
+        return item.price + sum;
+    }, 0);
 
     return (
         <header className='d-flex justify-between p-40'>
@@ -25,7 +29,7 @@ function Header(props) {
             <ul className='rightHeader d-flex align-center'>
                 <li className='mr-20 d-flex align-center cu-p' onClick={ handleCart }>
                     <img className='icon mr-5' src={ cartIcon } alt="Cart"/>
-                    <span>500$</span>
+                    <span>{ totalPrice } $</span>
                 </li>
                 <li className='mr-20'>
                     <NavLink to="/favorite">

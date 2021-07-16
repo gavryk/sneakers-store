@@ -47,6 +47,10 @@ function Drawer({ onRemoveItem, items = [] }) {
         setIsLoading(false);
     }
 
+    let totalPrice = cartSneakers.reduce((sum, item) => {
+        return item.price + sum;
+    }, 0);
+
     return (
         <div className="drawer-overlay">
             <div className="drawer p-30 d-flex flex-column">
@@ -90,12 +94,12 @@ function Drawer({ onRemoveItem, items = [] }) {
                                     <li>
                                         <span>Total: </span>
                                         <div></div>
-                                        <b>120$</b>
+                                        <b>{ totalPrice } $</b>
                                     </li>
                                     <li>
                                         <span>Tax 5%: </span>
                                         <div></div>
-                                        <b>20$</b>
+                                        <b>{ totalPrice * 0.05 } $</b>
                                     </li>
                                 </ul>
                                 <button disabled={ isLoading } onClick={ onClickOrder } className='btn greenBtn'>To Order</button>
