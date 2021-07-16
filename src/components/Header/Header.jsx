@@ -14,6 +14,7 @@ function Header() {
     const { totalPrice } = useCart();
     const { handleCart } = React.useContext(AppContext);
 
+
     return (
         <header className='d-flex justify-between p-40'>
             <NavLink to='/'>
