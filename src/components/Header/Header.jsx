@@ -6,14 +6,13 @@ import cartIcon from "../../img/cart-icon.svg";
 import heartIcon from "../../img/heart-unliked.svg";
 import userIcon from "../../img/user-icon.svg";
 import './Header.scss';
+
 import AppContext from "../../context";
+import {useCart} from "../../hooks/useCart";
 
-function Header(props) {
-    const { handleCart, cartSneakers } = React.useContext(AppContext);
-
-    let totalPrice = cartSneakers.reduce((sum, item) => {
-        return item.price + sum;
-    }, 0);
+function Header() {
+    const { totalPrice } = useCart();
+    const { handleCart } = React.useContext(AppContext);
 
     return (
         <header className='d-flex justify-between p-40'>

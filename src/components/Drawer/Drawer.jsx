@@ -6,9 +6,11 @@ import AppContext from "../../context";
 import emptyImg from "../../img/empty-cart.png";
 import orderCompleteImg from "../../img/complete-order-img.png";
 import axios from "axios";
+import {useCart} from "../../hooks/useCart";
 
 function Drawer({ onRemoveItem, items = [] }) {
-    const { handleCart, setCartSneakers, cartSneakers, apiURL } = React.useContext(AppContext);
+    const { cartSneakers, setCartSneakers, totalPrice } = useCart();
+    const { handleCart, apiURL } = React.useContext(AppContext);
     const [orderId, setOrderId] = React.useState(null);
     const [isOrderComplete, setIsOrderComplete] = React.useState(false);
     const [isLoading, setIsLoading] = React.useState(false);
@@ -46,10 +48,6 @@ function Drawer({ onRemoveItem, items = [] }) {
         }
         setIsLoading(false);
     }
-
-    let totalPrice = cartSneakers.reduce((sum, item) => {
-        return item.price + sum;
-    }, 0);
 
     return (
         <div className="drawer-overlay">
