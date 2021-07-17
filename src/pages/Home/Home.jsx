@@ -2,6 +2,9 @@ import Cards from "../../components/Cards/Cards";
 import searchIcon from "../../img/search-icon.svg";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes} from "@fortawesome/free-solid-svg-icons";
+import styles from './Home.module.scss';
+
+console.log(styles)
 
 function Home({ searchText,
  changeValue,
@@ -11,7 +14,7 @@ function Home({ searchText,
  isLoading
 }) {
     return (
-        <div className="content p-30">
+        <div className={`${styles.homeWrapper} content p-30`}>
             <div className='mb-40 d-flex justify-between align-center'>
                 <h2>{ searchText ? `Search: "${ searchText }"` : 'All Sneakers' }</h2>
 

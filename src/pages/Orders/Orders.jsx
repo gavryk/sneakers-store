@@ -11,10 +11,11 @@ function Orders() {
     const [orders, setOrders] = React.useState([]);
 
     React.useEffect(() => {
-        const { data } = axios.get(`${ apiURL }/order`);
-
+        (async () => {
+            const { data } = await axios.get(`${ apiURL }/order`);
+            setOrders(data);
+        })();
     }, []);
-
 
     return (
         <div className="content p-40">
@@ -24,20 +25,30 @@ function Orders() {
                 </Link>
                 <h2>My Orders</h2>
             </div>
+            {
+                orders
+                    .map(order => {
+                        const orderItems = order.items;
+                        return (
+                            <div key={ order.id } className='order-wrapper'>
+                                <h2 className='mb-20'>Order #{ order.id }</h2>
+                                <div className="cardsWrapper d-flex flex-wrap">
+                                    {
+                                        orderItems.map((card, index) => {
+                                            return (
+                                                <Card
+                                                    {...card}
+                                                    key={ index }
+                                                />
+                                            )
+                                        })
+                                    }
+                                </div>
+                            </div>
+                        )
+                    }).reverse()
+            }
 
-            <div className="cardsWrapper d-flex flex-wrap">
-                {
-                    []
-                        .map((card, index) => {
-                            return (
-                                <Card
-                                    {...card}
-                                    key={ index }
-                                />
-                            )
-                        })
-                }
-            </div>
         </div>
     )
 }
