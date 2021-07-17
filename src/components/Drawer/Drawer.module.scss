@@ -1,0 +1,66 @@
+.drawerOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 1;
+  transition: all .2s ease-in-out;
+  visibility: hidden;
+  .drawer {
+    position: fixed;
+    right: 0;
+    height: 100vh;
+    width: 420px;
+    background-color: #fff;
+    box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+    transform: translateX(100%);
+    transition: all .4s ease-in-out;
+    .removeBtn {
+      opacity: .5;
+      transition: all .2s ease-in-out;
+      &:hover {
+        opacity: 1;
+      }
+    }
+    .cartItems {
+      overflow: scroll;
+      .cartItem {
+        border: 1px solid #F3F3F3;
+        border-radius: 20px;
+        h5 {
+          font-size: 14px;
+          font-weight: 400;
+        }
+      }
+    }
+
+    .cartTotalBlock {
+      ul {
+        li {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 15px;
+          div {
+            flex: 1;
+            height: 1px;
+            border-bottom: 1px dashed #dfdfdf;
+            position: relative;
+            bottom: -5px;
+            margin: 0 10px;
+          }
+        }
+      }
+    }
+  }
+   &.drawerOwerlayOpened {
+     visibility: visible;
+     background-color: rgba(0, 0, 0, .5);
+     .drawer {
+       transform: translateX(0);
+     }
+   }
+
+}

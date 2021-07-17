@@ -104,14 +104,19 @@ function App() {
             onAddFavorite,
             handleCart,
             onAddToCart,
+            cartOpened
         }}>
             <div className={`wrapper clear ${ cartOpened ? 'overlay' : '' }`}>
-                <CSSTransition in={ cartOpened } timeout={200} classNames="fade" unmountOnExit>
-                    <Drawer
-                        items={ cartSneakers }
-                        onRemoveItem={ onRemoveItem }
-                    />
-                </CSSTransition>
+                {/*<CSSTransition in={ cartOpened } timeout={200} classNames="fade" unmountOnExit>*/}
+                {/*    <Drawer*/}
+                {/*        items={ cartSneakers }*/}
+                {/*        onRemoveItem={ onRemoveItem }*/}
+                {/*    />*/}
+                {/*</CSSTransition>*/}
+                <Drawer
+                    items={ cartSneakers }
+                    onRemoveItem={ onRemoveItem }
+                />
                 <Header />
                 <Switch>
                     <Route exact path='/'>

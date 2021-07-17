@@ -7,10 +7,11 @@ import emptyImg from "../../img/empty-cart.png";
 import orderCompleteImg from "../../img/complete-order-img.png";
 import axios from "axios";
 import {useCart} from "../../hooks/useCart";
+import styles from './Drawer.module.scss';
 
 function Drawer({ onRemoveItem, items = [] }) {
     const { cartSneakers, setCartSneakers, totalPrice } = useCart();
-    const { handleCart, apiURL } = React.useContext(AppContext);
+    const { handleCart, apiURL, cartOpened } = React.useContext(AppContext);
     const [orderId, setOrderId] = React.useState(null);
     const [isOrderComplete, setIsOrderComplete] = React.useState(false);
     const [isLoading, setIsLoading] = React.useState(false);
@@ -50,11 +51,11 @@ function Drawer({ onRemoveItem, items = [] }) {
     }
 
     return (
-        <div className="drawer-overlay">
-            <div className="drawer p-30 d-flex flex-column">
+        <div className={`${ styles.drawerOverlay } ${ cartOpened ? styles.drawerOwerlayOpened : '' }`}>
+            <div className={`${ styles.drawer } p-30 d-flex flex-column`}>
                 <div className="mb-30 drawer-title d-flex justify-between align-center">
                     <h2>Cart</h2>
-                    <button className="button removeBtn" onClick={ handleCart }>
+                    <button className={`button ${styles.removeBtn}`} onClick={ handleCart }>
                         <FontAwesomeIcon icon={faTimes} />
                     </button>
                 </div>
@@ -62,13 +63,13 @@ function Drawer({ onRemoveItem, items = [] }) {
                 {
                     items.length > 0
                         ? <>
-                            <div className="cart-items d-flex flex-column flex">
+                            <div className={`${styles.cartItems} d-flex flex-column flex`}>
                                 {
                                     items.map((item, index )=> {
                                         return (
                                             <div
                                                 key={ index + 'dx' }
-                                                className="cart-item p-15 d-flex align-center justify-between mb-20">
+                                                className={`${ styles.cartItem } p-15 d-flex align-center justify-between mb-20`}>
                                                 <img
                                                     className='mr-10 cartItemImage'
                                                     width={70}
@@ -79,7 +80,7 @@ function Drawer({ onRemoveItem, items = [] }) {
                                                     <h5 className='mb-5'>{ item.title }</h5>
                                                     <b>{ item.price }$</b>
                                                 </div>
-                                                <button className="button removeBtn" onClick={ () => onRemoveItem(item.id) }>
+                                                <button className={`button ${ styles.removeBtn }`} onClick={ () => onRemoveItem(item.id) }>
                                                     <FontAwesomeIcon icon={faTimes} />
                                                 </button>
                                             </div>
@@ -87,7 +88,7 @@ function Drawer({ onRemoveItem, items = [] }) {
                                     })
                                 }
                             </div>
-                            <div className='cartTotalBlock'>
+                            <div className={`${ styles.cartTotalBlock }`}>
                                 <ul className='mb-20'>
                                     <li>
                                         <span>Total: </span>
