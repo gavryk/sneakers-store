@@ -15,7 +15,8 @@ function Card({
   title,
   price,
   isFavorite = false,
-  loading = false
+  loading = false,
+  hideBtn
 }) {
     const { isSneakersAdded, onAddToCart, onAddFavorite } = React.useContext(AppContext);
     const [isLiked, setIsLiked] = React.useState(isFavorite);
@@ -51,13 +52,17 @@ function Card({
                     </ContentLoader>
                     : <>
                         <div className={ styles.cardTop + ' mb-15 text-center' }>
-                            <button className={`button ${styles.buttonLike} ${ isLiked ? styles.isLiked : '' }`} onClick={ handleLike }>
-                                {
-                                    isLiked
-                                        ? <FontAwesomeIcon icon={faHeart} />
-                                        : <FontAwesomeIcon icon={farHeart} />
-                                }
-                            </button>
+                            {
+                                hideBtn
+                                ? ''
+                                : <button className={`button ${styles.buttonLike} ${ isLiked ? styles.isLiked : '' }`} onClick={ handleLike }>
+                                        {
+                                            isLiked
+                                                ? <FontAwesomeIcon icon={faHeart} />
+                                                : <FontAwesomeIcon icon={farHeart} />
+                                        }
+                                    </button>
+                            }
                             <img width={130} height={130} src={ image } alt="Sneakers"/>
                             <h5>{ title }</h5>
                         </div>
@@ -66,13 +71,19 @@ function Card({
                                 <span>Price:</span>
                                 <b>{ price }$</b>
                             </div>
-                            <button className={` ${styles.addProd} button ${ isSneakersAdded(id) ? styles.checked : '' }` } onClick={ handlePlus }>
-                                {
-                                    isSneakersAdded(id)
-                                        ? <FontAwesomeIcon icon={ faCheck } />
-                                        : <FontAwesomeIcon icon={ faPlus } />
-                                }
-                            </button>
+                            {
+                                hideBtn
+                                ? ''
+                                : <button className={` ${styles.addProd} button ${ isSneakersAdded(id) ? styles.checked : '' }` } onClick={ handlePlus }>
+                                        {
+                                            isSneakersAdded(id)
+                                                ? <FontAwesomeIcon icon={ faCheck } />
+                                                : <FontAwesomeIcon icon={ faPlus } />
+                                        }
+                                    </button>
+
+                            }
+
                         </div>
                     </>
 

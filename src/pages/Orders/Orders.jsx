@@ -9,11 +9,18 @@ import AppContext from "../../context";
 function Orders() {
     const { apiURL } = React.useContext(AppContext);
     const [orders, setOrders] = React.useState([]);
+    //Loading
+    const [isLoading, setIsLoading] = React.useState(true);
 
     React.useEffect(() => {
         (async () => {
-            const { data } = await axios.get(`${ apiURL }/order`);
-            setOrders(data);
+            try {
+                const { data } = await axios.get(`${ apiURL }/order`);
+                setOrders(data);
+                setIsLoading(false);
+            } catch (err) {
+                alert(err)
+            }
         })();
     }, []);
 
@@ -28,17 +35,22 @@ function Orders() {
             {
                 orders
                     .map(order => {
-                        const orderItems = order.items;
+                        const orderItems = isLoading ? [...Array(8)] : order.items;
                         return (
                             <div key={ order.id } className='order-wrapper'>
-                                <h2 className='mb-20'>Order #{ order.id }</h2>
+                                <div className="flex justify-between">
+                                    <h2 className='mb-20'>Order #{ order.id }</h2>
+                                </div>
                                 <div className="cardsWrapper d-flex flex-wrap">
                                     {
+
                                         orderItems.map((card, index) => {
                                             return (
                                                 <Card
                                                     {...card}
                                                     key={ index }
+                                                    loading={ isLoading }
+                                                    hideBtn={ true }
                                                 />
                                             )
                                         })

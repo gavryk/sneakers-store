@@ -4,8 +4,6 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes} from "@fortawesome/free-solid-svg-icons";
 import styles from './Home.module.scss';
 
-console.log(styles)
-
 function Home({ searchText,
  changeValue,
  setSearchValue,
