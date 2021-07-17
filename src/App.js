@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import Header from "./components/Header/Header";
 import Drawer from "./components/Drawer/Drawer";
 import Favorite from "./pages/Favorite/Favorite";
+import Orders from "./pages/Orders/Orders";
 import Home from "./pages/Home/Home";
 import {CSSTransition} from "react-transition-group";
 import AppContext from "./context";
@@ -125,6 +126,9 @@ function App() {
                     </Route>
                     <Route path='/favorite'>
                         <Favorite />
+                    </Route>
+                    <Route path='/orders'>
+                        <Orders />
                     </Route>
                 </Switch>
             </div>

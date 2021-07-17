@@ -37,7 +37,9 @@ function Header() {
                     </NavLink>
                 </li>
                 <li>
-                    <img className='icon' src={ userIcon } alt="User"/>
+                    <NavLink to='/orders'>
+                        <img className='icon' src={ userIcon } alt="User"/>
+                    </NavLink>
                 </li>
             </ul>
         </header>
