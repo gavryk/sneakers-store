@@ -13,7 +13,7 @@ function Home({ searchText,
 }) {
     return (
         <div className={`${styles.homeWrapper} content p-30`}>
-            <div className='mb-40 d-flex justify-between align-center'>
+            <div className='mb-40 d-flex justify-between align-center flex-wrap'>
                 <h2>{ searchText ? `Search: "${ searchText }"` : 'All Sneakers' }</h2>
 
                 <div className="search-block d-flex align-center p-10">

@@ -31,7 +31,7 @@ function Card({
     }
 
     return (
-        <div className={`${styles.card} mb-30 mr-20`}>
+        <div className={`${styles.card}`}>
             {
                 loading ?
                     <ContentLoader

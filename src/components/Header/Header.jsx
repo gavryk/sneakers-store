@@ -20,7 +20,7 @@ function Header() {
 
 
     return (
-        <header className='d-flex justify-between p-40'>
+        <header className='d-flex justify-between p-40 flex-wrap'>
             <NavLink to='/'>
                 <div id="logo" className='d-flex align-center'>
                     <img className='logoImage mr-10' src={ logo } alt=""/>
