@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/sneakers-store/static/css/main.169c908b.chunk.css",
+    "main.js": "/sneakers-store/static/js/main.2e376cc2.chunk.js",
+    "main.js.map": "/sneakers-store/static/js/main.2e376cc2.chunk.js.map",
+    "runtime-main.js": "/sneakers-store/static/js/runtime-main.4f98e3ff.js",
+    "runtime-main.js.map": "/sneakers-store/static/js/runtime-main.4f98e3ff.js.map",
+    "static/css/2.caa02cb8.chunk.css": "/sneakers-store/static/css/2.caa02cb8.chunk.css",
+    "static/js/2.232c172a.chunk.js": "/sneakers-store/static/js/2.232c172a.chunk.js",
+    "static/js/2.232c172a.chunk.js.map": "/sneakers-store/static/js/2.232c172a.chunk.js.map",
+    "index.html": "/sneakers-store/index.html",
+    "static/css/2.caa02cb8.chunk.css.map": "/sneakers-store/static/css/2.caa02cb8.chunk.css.map",
+    "static/css/main.169c908b.chunk.css.map": "/sneakers-store/static/css/main.169c908b.chunk.css.map",
+    "static/js/2.232c172a.chunk.js.LICENSE.txt": "/sneakers-store/static/js/2.232c172a.chunk.js.LICENSE.txt",
+    "static/media/cart-icon.5113b08f.svg": "/sneakers-store/static/media/cart-icon.5113b08f.svg",
+    "static/media/complete-order-img.28c53daa.png": "/sneakers-store/static/media/complete-order-img.28c53daa.png",
+    "static/media/empty-cart.bb15a2ea.png": "/sneakers-store/static/media/empty-cart.bb15a2ea.png",
+    "static/media/heart-unliked.31c528b0.svg": "/sneakers-store/static/media/heart-unliked.31c528b0.svg",
+    "static/media/search-icon.48c52bf5.svg": "/sneakers-store/static/media/search-icon.48c52bf5.svg",
+    "static/media/sneakers-logo.a00908df.png": "/sneakers-store/static/media/sneakers-logo.a00908df.png",
+    "static/media/user-icon.381202f7.svg": "/sneakers-store/static/media/user-icon.381202f7.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4f98e3ff.js",
+    "static/css/2.caa02cb8.chunk.css",
+    "static/js/2.232c172a.chunk.js",
+    "static/css/main.169c908b.chunk.css",
+    "static/js/main.2e376cc2.chunk.js"
+  ]
+}
