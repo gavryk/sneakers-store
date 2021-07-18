@@ -6,7 +6,6 @@ import {faHeart} from "@fortawesome/free-solid-svg-icons";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import {faCheck} from "@fortawesome/free-solid-svg-icons";
 import styles from './Card.module.scss';
-
 import AppContext from "../../../context";
 
 function Card({
