@@ -30,15 +30,22 @@ function App() {
     //Render Once
     React.useEffect(() => {
         async function fetchData() {
-            const cartResp = await axios.get(`${ apiURL }/cart`);
-            const favoriteResp = await axios.get(`${ apiURL }/favorite`);
-            const sneakerResp = await axios.get(`${ apiURL }/items`);
+            try {
+                const [cartResp, favoriteResp, sneakerResp] = await Promise.all([
+                    axios.get(`${ apiURL }/cart`),
+                    axios.get(`${ apiURL }/favorite`),
+                    axios.get(`${ apiURL }/items`)
+                ]);
 
-            setIsLoading(false);
+                setIsLoading(false);
 
-            setCartSneakers(cartResp.data);
-            setLikedSneakers(favoriteResp.data);
-            setSneakers(sneakerResp.data);
+                setCartSneakers(cartResp.data);
+                setLikedSneakers(favoriteResp.data);
+                setSneakers(sneakerResp.data);
+            } catch (err) {
+                alert('Error');
+                console.error(err);
+            }
         }
 
         fetchData();
