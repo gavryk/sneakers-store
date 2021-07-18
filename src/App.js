@@ -31,6 +31,8 @@ function App() {
     React.useEffect(() => {
         async function fetchData() {
             try {
+                //not always good, as we expect that all the promises will end.
+                //but in my case everything will be ok
                 const [cartResp, favoriteResp, sneakerResp] = await Promise.all([
                     axios.get(`${ apiURL }/cart`),
                     axios.get(`${ apiURL }/favorite`),
@@ -65,15 +67,26 @@ function App() {
     }, [darkTheme]);
 
     //Add To Cart
-    const onAddToCart = (products) => {
+    const onAddToCart = async (products) => {
         try {
             const findItem = cartSneakers.find(item => Number(item.parentId) === Number(products.id));
             if (findItem) {
-                axios.delete(`${ apiURL }/cart/${ products.id }`);
-                setCartSneakers(prev => prev.filter(item => Number(item.id) !== Number(products.id)));
+                await axios.delete(`${ apiURL }/cart/${ findItem.id }`);
+                setCartSneakers(prev => prev.filter(item => Number(item.parentId) !== Number(products.id)));
             } else {
-                axios.post(`${ apiURL }/cart`, products);
-                setCartSneakers(prev => [...prev, products]);
+                setCartSneakers((prev) => [...prev, products]);
+                const { data } = await axios.post(`${ apiURL }/cart`, products);
+                setCartSneakers((prev) =>
+                    prev.map((item) => {
+                        if (item.parentId === data.parentId) {
+                            return {
+                                ...item,
+                                id: data.id,
+                            };
+                        }
+                        return item;
+                    }),
+                );
             }
         } catch(err) {
 
