@@ -76,6 +76,7 @@ function App() {
             } else {
                 setCartSneakers((prev) => [...prev, products]);
                 const { data } = await axios.post(`${ apiURL }/cart`, products);
+
                 setCartSneakers((prev) =>
                     prev.map((item) => {
                         if (item.parentId === data.parentId) {
