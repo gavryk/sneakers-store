@@ -1,10 +1,11 @@
 import React from "react";
 import Card from "../../components/Cards/Card/Card";
 import {faChevronLeft} from "@fortawesome/free-solid-svg-icons";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import AppContext from "../../context";
+import noOrders from "../../img/no-orders.png";
 
 function Orders() {
     const { apiURL } = React.useContext(AppContext);
@@ -33,8 +34,8 @@ function Orders() {
                 <h2>My Orders</h2>
             </div>
             {
-                orders
-                    .map(order => {
+                orders.length > 0
+                    ? orders.map(order => {
                         const orderItems = isLoading ? [...Array(8)] : order.items;
                         return (
                             <div key={ order.id } className='order-wrapper'>
@@ -59,6 +60,16 @@ function Orders() {
                             </div>
                         )
                     }).reverse()
+                    : <div className='empty-block d-flex justify-center align-center text-center w100p'>
+                        <div>
+                            <img className='mb-10' src={ noOrders } alt=""/>
+                            <h2 className='mb-10'>You have no orders</h2>
+                            <p className='mb-20'>Place at least one order.</p>
+                            <button className='btn greenBtn'>
+                                <NavLink to="/">Back To Shop</NavLink>
+                            </button>
+                        </div>
+                    </div>
             }
 
         </div>

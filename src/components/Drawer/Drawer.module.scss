@@ -16,7 +16,7 @@
     background-color: #fff;
     box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
     transform: translateX(100%);
-    transition: all .4s ease-in-out;
+    transition: all .4s cubic-bezier(0,.63,.69,.71);
     .removeBtn {
       opacity: .5;
       transition: all .2s ease-in-out;
