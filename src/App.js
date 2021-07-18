@@ -6,7 +6,7 @@ import Drawer from "./components/Drawer/Drawer";
 import Favorite from "./pages/Favorite/Favorite";
 import Orders from "./pages/Orders/Orders";
 import Home from "./pages/Home/Home";
-import {CSSTransition} from "react-transition-group";
+// import {CSSTransition} from "react-transition-group";
 import AppContext from "./context";
 
 function App() {
@@ -24,6 +24,8 @@ function App() {
     const [likedSneakers, setLikedSneakers] = React.useState([]);
     //Loading
     const [isLoading, setIsLoading] = React.useState(true);
+    //App Theme
+    const [darkTheme, setDarkTheme] = React.useState(false);
 
     //Render Once
     React.useEffect(() => {
@@ -40,7 +42,20 @@ function App() {
         }
 
         fetchData();
+
+        //Get LocalStorage Theme
+        const json = localStorage.getItem("dark");
+        const currentMode = JSON.parse(json);
+        currentMode && setDarkTheme(!darkTheme);
+
     }, []);
+
+    //Set Theme
+    React.useEffect(() => {
+        darkTheme ? document.body.classList.add("dark") : document.body.classList.remove("dark");
+        const json = JSON.stringify(darkTheme);
+        localStorage.setItem("dark", json);
+    }, [darkTheme]);
 
     //Add To Cart
     const onAddToCart = (products) => {
@@ -93,6 +108,11 @@ function App() {
         setCartOpened(!cartOpened);
     }
 
+    //Toggle Theme
+    const toggleTheme = () => {
+        setDarkTheme(!darkTheme);
+    }
+
     return (
         <AppContext.Provider value={{
             apiURL,
@@ -104,9 +124,11 @@ function App() {
             onAddFavorite,
             handleCart,
             onAddToCart,
-            cartOpened
+            cartOpened,
+            darkTheme,
+            toggleTheme
         }}>
-            <div className={`wrapper clear ${ cartOpened ? 'overlay' : '' }`}>
+            <div className={`wrapper clear ${ cartOpened ? 'overlay' : '' }${ darkTheme ? 'dark-wrapper' : '' }`}>
                 {/*<CSSTransition in={ cartOpened } timeout={200} classNames="fade" unmountOnExit>*/}
                 {/*    <Drawer*/}
                 {/*        items={ cartSneakers }*/}

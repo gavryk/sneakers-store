@@ -13,6 +13,15 @@ header {
         max-height: 18px;
         max-width: 18px;
       }
+      button {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        svg {
+          font-size: 18px;
+          opacity: .5;
+        }
+      }
     }
   }
 }

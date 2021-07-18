@@ -5,14 +5,18 @@ import logo from "../../img/sneakers-logo.png";
 import cartIcon from "../../img/cart-icon.svg";
 import heartIcon from "../../img/heart-unliked.svg";
 import userIcon from "../../img/user-icon.svg";
+import {faMoon as farMoon} from "@fortawesome/free-regular-svg-icons";
+import {faSun as farSun} from "@fortawesome/free-regular-svg-icons";
 import './Header.scss';
 
 import AppContext from "../../context";
 import {useCart} from "../../hooks/useCart";
+import {faHeart} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 function Header() {
     const { totalPrice } = useCart();
-    const { handleCart } = React.useContext(AppContext);
+    const { handleCart, darkTheme, toggleTheme } = React.useContext(AppContext);
 
 
     return (
@@ -36,10 +40,15 @@ function Header() {
                         <img className='icon' src={ heartIcon } alt="Like"/>
                     </NavLink>
                 </li>
-                <li>
+                <li className='mr-20'>
                     <NavLink to='/orders'>
                         <img className='icon' src={ userIcon } alt="User"/>
                     </NavLink>
+                </li>
+                <li>
+                    <button onClick={ toggleTheme }>
+                        <FontAwesomeIcon icon={ darkTheme ? farMoon : farSun } />
+                    </button>
                 </li>
             </ul>
         </header>
