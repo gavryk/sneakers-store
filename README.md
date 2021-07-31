@@ -1,5 +1,6 @@
 #
 https://gavryk.github.io/sneakers-store/
+https://sneak-store.netlify.app/
 
 # Getting Started with Create React App
 
